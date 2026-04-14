@@ -1,0 +1,17 @@
+#Configuración para el servidor Tomcat
+server:
+  port: 8090
+
+spring:
+  #Configuracion para el datasource
+  datasource:
+    url: jdbc:h2:file:c:/h2/ejemploSpringBootMVCRest
+    username: sa
+    password:
+
+  #Configuracion para JPA
+  jpa:
+    open-in-view: false    
+    show-sql: true
+    hibernate.ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
