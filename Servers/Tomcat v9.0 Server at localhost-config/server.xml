@@ -47,6 +47,10 @@
        Documentation at /docs/config/service.html
    -->
   <Service name="Catalina">
+  
+  
+	<Connector SSLEnabled="true" acceptCount="100" connectionTimeout="20000" executor="tomcatThreadPool" keyAlias="tcserver" keystoreFile="${catalina.base}/conf/tcserver.keystore" keystorePass="changeme" maxKeepAliveRequests="15" port="8443" protocol="HTTP/1.1" redirectPort="8443" scheme="https" secure="true"/>  
+  
 
     <!--The connectors can use a shared executor, you can define one or more named thread pools-->
     <!--
@@ -162,7 +166,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="SpringSecurity5_Inicio_6-2025" path="/SpringSecurity5" reloadable="true" source="org.eclipse.jst.jee.server:SpringSecurity5_Inicio_6-2025"/></Host>
+      </Host>
     </Engine>
   </Service>
 </Server>

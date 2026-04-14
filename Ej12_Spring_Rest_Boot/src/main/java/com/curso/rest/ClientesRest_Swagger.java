@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.curso.modelo.entidad.Cliente;
-import com.curso.modelo.negocio.GestorClientes;
+import com.curso.modelo.negocio.ServicioClientes;
 import com.curso.modelo.negocio.excepcion.ClienteException;
 import com.curso.rest.dto.ClienteDto;
 import com.curso.rest.dto.Data;
@@ -50,9 +50,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Clientes", description = "API Rest para la gestión de clientes")
 public class ClientesRest_Swagger {
 
-	private GestorClientes gestorClientes;
+	private ServicioClientes gestorClientes;
 	
-	public ClientesRest_Swagger(GestorClientes gestorClientes) {
+	public ClientesRest_Swagger(ServicioClientes gestorClientes) {
 		super();
 		this.gestorClientes = gestorClientes;
 	}

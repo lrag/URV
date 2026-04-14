@@ -38,6 +38,8 @@
 		<form action="" name="formulario" method="POST">
 		
 			<input type="hidden" id="id" name="id"/>
+			
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>	
 
 			<table width="800px">
 				<tr>
@@ -63,9 +65,16 @@
 							<a href="<c:url value='/expedientesx/clasificar?id=${expediente.id}'/>">clasificar</a>
 							<a href="<c:url value='/expedientesx/desclasificar?id=${expediente.id}'/>">desclasificar</a>
 							-->
-							<!--  -->
+							<!--  
 							<a href="#" onclick="clasificar(${expediente.id})">clasificar</a>
 							<a href="#" onclick="desclasificar(${expediente.id})">desclasificar</a>
+							-->
+
+							<sec:authorize access="@seguridad.getPermiso()">
+								<a href="#" onclick="clasificar(${expediente.id})">clasificar</a>
+								<a href="#" onclick="desclasificar(${expediente.id})">desclasificar</a>
+							</sec:authorize>							
+							
 						</td>
 					</tr>
 				</c:forEach>

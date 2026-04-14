@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import expedientesx.modelo.entidad.Expediente;
-import expedientesx.modelo.negocio.GestorExpendientes;
+import expedientesx.modelo.negocio.ServicioExpendientes;
 
 @Controller
 public class ControladorExpedientes {
 	@Autowired 
-	private GestorExpendientes gestionExpendientes;
+	private ServicioExpendientes servicioExpendientes;
 	
 	//@RequestMapping("/mostrar/todos")
 	@GetMapping("/mostrar/todos")
@@ -25,7 +25,7 @@ public class ControladorExpedientes {
 		System.out.println("Peticion Mostrar Expedientes Recibida");
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("listadoExpedientes");
-		mav.addObject("expedientes", gestionExpendientes.listarTodos());
+		mav.addObject("expedientes", servicioExpendientes.listarTodos());
 		return mav;
 	}
 	
@@ -34,7 +34,7 @@ public class ControladorExpedientes {
 		System.out.println("Peticion Mostrar Expediente Recibida");
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("detalleExpediente");
-		mav.addObject("expediente", gestionExpendientes.buscar(id));
+		mav.addObject("expediente", servicioExpendientes.buscar(id));
 		return mav;
 	}
 	
@@ -45,8 +45,8 @@ public class ControladorExpedientes {
 	@PostMapping(value="/clasificar")
 	public String clasificar( @RequestParam("id") Long id, Model model){
 		System.out.println("Clasificar el expediente: "+id);
-		Expediente expediente = gestionExpendientes.buscar(id);
-		gestionExpendientes.clasificar(expediente);
+		Expediente expediente = servicioExpendientes.buscar(id);
+		servicioExpendientes.clasificar(expediente);
 		return "redirect:/expedientesx/mostrar/todos";
 	}
 	
@@ -57,8 +57,8 @@ public class ControladorExpedientes {
 	@PostMapping(value="/desclasificar")
 	public String desclasificar( @RequestParam("id") Long id, Model model){
 		System.out.println("Desclasificar el expediente: "+id);
-		Expediente expediente = gestionExpendientes.buscar(id);
-		gestionExpendientes.desclasificar(expediente);
+		Expediente expediente = servicioExpendientes.buscar(id);
+		servicioExpendientes.desclasificar(expediente);
 		return "redirect:/expedientesx/mostrar/todos";
 	}
 

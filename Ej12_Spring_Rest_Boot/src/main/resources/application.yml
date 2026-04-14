@@ -5,7 +5,7 @@ server:
 spring:
   #Configuracion para el datasource
   datasource:
-    url: jdbc:h2:file:c:/h2/ejemploSpringBootMVCRest
+    url: jdbc:h2:file:c:/h2/bbdd_ejemplo_rest
     username: sa
     password:
 

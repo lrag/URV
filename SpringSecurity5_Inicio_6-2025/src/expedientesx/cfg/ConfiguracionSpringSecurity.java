@@ -6,9 +6,11 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,6 +27,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+@ComponentScan(basePackages = "expedientesx.util")
+@EnableMethodSecurity(securedEnabled = true, jsr250Enabled=true, prePostEnabled=true)
 public class ConfiguracionSpringSecurity {
     
 	@Bean
@@ -69,7 +73,7 @@ public class ConfiguracionSpringSecurity {
             .requestMatchers(AntPathRequestMatcher.antMatcher("/paginas/*")).permitAll()
             .requestMatchers(AntPathRequestMatcher.antMatcher("/css/*")).permitAll()
             .requestMatchers(AntPathRequestMatcher.antMatcher("/imagenes/*")).permitAll()
-            .requestMatchers(AntPathRequestMatcher.antMatcher("/**")).hasRole("AGENTE_ESPECIAL")      
+            .requestMatchers(AntPathRequestMatcher.antMatcher("/**")).authenticated() //hasRole("AGENTE_ESPECIAL")    
     		//.requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/desclasificar")).hasRole("DIRECTOR")          
         );
 
@@ -88,9 +92,27 @@ public class ConfiguracionSpringSecurity {
 	            .invalidSessionUrl("/paginas/sesion-expirada.jsp")
 	            .maximumSessions(1)
 	            .maxSessionsPreventsLogin(true) //false por defecto
-	        );	
-	
-	    http.csrf().disable();
+	        );
+	    
+	    http.requiresChannel(channel -> channel
+	    		.anyRequest()
+	    		.requiresSecure()
+	    	);
+
+    	//Activo por defecto
+    	http.headers(headers -> headers
+    		.httpStrictTransportSecurity(hsts -> hsts
+    			.includeSubDomains(true)
+    			.preload(true)
+    			.maxAgeInSeconds(31536000)
+    		)
+    	);	    
+    	
+    	http.exceptionHandling(handling -> handling
+    	    	.accessDeniedPage("/paginas/acceso-denegado.jsp")
+    		);
+    	
+	    //http.csrf().disable();
 	
 	    return http.build();			
 

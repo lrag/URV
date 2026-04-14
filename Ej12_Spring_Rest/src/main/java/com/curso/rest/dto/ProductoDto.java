@@ -1,9 +1,7 @@
 package com.curso.rest.dto;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import com.curso.modelo.entidad.Producto;
 
-@XmlRootElement
 public class ProductoDto {
 
 	private Integer id;

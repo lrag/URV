@@ -2,20 +2,21 @@ package batch;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.curso.cfg.Configuracion;
+import com.curso.modelo.entidad.CalificacionProducto;
 import com.curso.modelo.entidad.Cliente;
 import com.curso.modelo.entidad.DetallePedido;
 import com.curso.modelo.entidad.Pedido;
 import com.curso.modelo.entidad.Producto;
+import com.curso.modelo.persistencia.CalificacionProductoDao;
+import com.curso.modelo.persistencia.ProductoDao;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 
 public class CargaDatos {
 
@@ -37,6 +38,17 @@ public class CargaDatos {
 		em.persist(p3);		
 		em.persist(p4);
 		em.persist(p5);
+		
+		CalificacionProducto cp1 = new CalificacionProducto(null, "Bartolo", "Está bien", p1);
+		CalificacionProducto cp2 = new CalificacionProducto(null, "Bartola", "Está bien", p1);
+		CalificacionProducto cp3 = new CalificacionProducto(null, "Ringo Starr", "Está muy bien", p1);
+		CalificacionProducto cp4 = new CalificacionProducto(null, "Ellen Ripley", "No está mal", p1);
+		CalificacionProducto cp5 = new CalificacionProducto(null, "Higinio Alonso", "8/10", p1);
+		em.persist(cp1);
+		em.persist(cp2);
+		em.persist(cp3);
+		em.persist(cp4);
+		em.persist(cp5);
 		
 		Cliente c1 = new Cliente(null, "Harpo", "Su casa", "123", 1);
 		Cliente c2 = new Cliente(null, "Mongomery Burns", "Su mansión", "123", 9999);
@@ -70,8 +82,15 @@ public class CargaDatos {
 		
 		em.getTransaction().commit();
 		em.close();
-		emf.close();
 		
+		/*
+		ProductoDao pDao = appCtx.getBean(ProductoDao.class);
+		Producto pAux = pDao.buscar(1);
+		System.out.println(pAux);
+		CalificacionProductoDao cpDao = appCtx.getBean(CalificacionProductoDao.class);
+		System.out.println(cpDao.listarPorProducto(pAux));
+		*/
+				
 	}
 	
 }

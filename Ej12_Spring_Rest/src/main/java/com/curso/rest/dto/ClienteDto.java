@@ -1,10 +1,9 @@
 package com.curso.rest.dto;
 
-import javax.validation.constraints.NotEmpty;
-
 import com.curso.modelo.entidad.Cliente;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotEmpty;
 
 @Schema(name = "Cliente", description = "Objeto de transferencia de datos que representa a un Cliente")
 public class ClienteDto {

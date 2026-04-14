@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.curso.modelo.entidad.Cliente;
-import com.curso.modelo.negocio.GestorClientes;
+import com.curso.modelo.negocio.ServicioClientes;
 import com.curso.modelo.negocio.excepcion.ClienteException;
 import com.curso.rest.dto.ClienteDto;
 import com.curso.rest.dto.Data;
@@ -44,9 +44,9 @@ DELETE /clientes/id
 	)
 public class ClientesRest {
 
-	private GestorClientes gestorClientes;
+	private ServicioClientes gestorClientes;
 	
-	public ClientesRest(GestorClientes gestorClientes) {
+	public ClientesRest(ServicioClientes gestorClientes) {
 		super();
 		this.gestorClientes = gestorClientes;
 	}

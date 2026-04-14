@@ -1,13 +1,11 @@
 package com.curso.rest.dto;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import com.curso.modelo.entidad.Cliente;
 import com.curso.modelo.entidad.Pedido;
 
-@XmlRootElement
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 public class PedidoDto {
 	
 	private Integer id;

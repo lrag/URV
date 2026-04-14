@@ -3,8 +3,6 @@ package com.curso.rest;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,10 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.curso.modelo.entidad.Cliente;
-import com.curso.modelo.negocio.GestorClientes;
+import com.curso.modelo.negocio.ServicioClientes;
 import com.curso.modelo.negocio.excepcion.ClienteException;
 import com.curso.rest.dto.ClienteDto;
 import com.curso.rest.dto.Data;
@@ -33,6 +30,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 
 //
@@ -49,9 +47,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Cliente", description = "API Rest para la gestión de clientes")
 public class ClientesRest_Swagger {
 
-	private GestorClientes gestorClientes;
+	private ServicioClientes gestorClientes;
 	
-	public ClientesRest_Swagger(GestorClientes gestorClientes) {
+	public ClientesRest_Swagger(ServicioClientes gestorClientes) {
 		super();
 		this.gestorClientes = gestorClientes;
 	}

@@ -2,10 +2,8 @@ package com.curso.cfg;
 
 import java.util.Properties;
 
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import org.hibernate.cfg.Environment;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +12,8 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 @ComponentScan( basePackages= "com.curso.modelo" )
@@ -24,7 +24,7 @@ public class Configuracion {
 	DataSource dataSource() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName("org.h2.Driver");
-		ds.setUrl("jdbc:h2:file:c:/h2/bbdd_movidas_2");
+		ds.setUrl("jdbc:h2:file:c:/h2/bbdd_ejemplo_rest");
 		ds.setUsername("sa");
 		ds.setPassword("");
 		return ds;
@@ -38,7 +38,7 @@ public class Configuracion {
 		entityManagerFactoryBean.setPackagesToScan("com.curso.modelo.entidad");
 
 		Properties jpaProperties = new Properties();
-		jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+		//jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 		jpaProperties.put("hibernate.hbm2ddl.auto", "update");
 		jpaProperties.put("hibernate.show_sql", "true");
 		jpaProperties.put("hibernate.format_sql", "false");

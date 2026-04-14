@@ -1,15 +1,8 @@
 package com.curso.cfg;
 
-import java.io.IOException;
-
-import javax.servlet.Servlet;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebServlet;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRegistration;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
@@ -39,7 +32,8 @@ public class AppInitializer implements WebApplicationInitializer {
     //En este método inicalizamos y devolvemos el contenedor de Spring(Application context)
     private AnnotationConfigWebApplicationContext getContext() {
     	AnnotationConfigWebApplicationContext appCtx = new AnnotationConfigWebApplicationContext();
-        appCtx.setConfigLocation("com.curso.cfg");
+        //appCtx.setConfigLocation("com.curso.cfg");
+        appCtx.register(Configuracion.class, ConfiguracionMVC.class);
         return appCtx;
     }
     

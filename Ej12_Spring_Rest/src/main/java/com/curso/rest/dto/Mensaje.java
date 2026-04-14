@@ -1,8 +1,5 @@
 package com.curso.rest.dto;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class Mensaje {
 
 	private String codigo;

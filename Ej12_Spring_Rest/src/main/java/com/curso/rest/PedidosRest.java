@@ -1,30 +1,26 @@
 package com.curso.rest;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
-
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MimeTypeUtils;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.curso.modelo.entidad.Pedido;
-import com.curso.modelo.negocio.GestorPedidos;
+import com.curso.modelo.negocio.ServicioPedidos;
 import com.curso.rest.dto.PedidoDto;
+
+import jakarta.validation.Valid;
 
 //@Controller
 @RestController
@@ -32,7 +28,7 @@ import com.curso.rest.dto.PedidoDto;
 public class PedidosRest {
 
 	@Autowired
-	private GestorPedidos gestorPedidos;
+	private ServicioPedidos gestorPedidos;
 	
 	
 	@GetMapping(produces = MimeTypeUtils.APPLICATION_JSON_VALUE)

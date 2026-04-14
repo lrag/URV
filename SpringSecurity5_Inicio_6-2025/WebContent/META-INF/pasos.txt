@@ -278,6 +278,8 @@ Deprecated:
 #############################################################################################################
 WEB-INF/jsp/listadoExpedientes.jsp
 
+SpEL
+
 <sec:authorize access="hasAnyRole('ROLE_AGENTE_ESPECIAL','ROLE_DIRECTOR')">
 	<a href="#" onclick="clasificar(${expediente.id})">clasificar</a>
 	<a href="#" onclick="desclasificar(${expediente.id})">desclasificar</a>
@@ -322,6 +324,7 @@ http.csrf().disable();
 Añadir un campo oculto para guardar el token en todos los formularios que utilicen el método POST:
 -nuestro-login.jsp
 -listadoExpedientes.jsp
+-index.jsp
 
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>	
 

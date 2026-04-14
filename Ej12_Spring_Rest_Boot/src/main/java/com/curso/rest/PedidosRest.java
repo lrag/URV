@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.curso.modelo.entidad.Pedido;
-import com.curso.modelo.negocio.GestorPedidos;
+import com.curso.modelo.negocio.ServicioPedidos;
 import com.curso.rest.dto.PedidoDto;
 
 //@Controller
@@ -32,7 +32,7 @@ import com.curso.rest.dto.PedidoDto;
 public class PedidosRest {
 
 	@Autowired
-	private GestorPedidos gestorPedidos;
+	private ServicioPedidos gestorPedidos;
 	
 	
 	@GetMapping(produces = MimeTypeUtils.APPLICATION_JSON_VALUE)

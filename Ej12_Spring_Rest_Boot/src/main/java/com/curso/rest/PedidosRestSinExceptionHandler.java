@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.curso.modelo.entidad.Pedido;
-import com.curso.modelo.negocio.GestorPedidos;
+import com.curso.modelo.negocio.ServicioPedidos;
 import com.curso.rest.dto.PedidoDto;
 
 import jakarta.validation.Valid;
@@ -29,7 +29,7 @@ import jakarta.validation.Valid;
 public class PedidosRestSinExceptionHandler {
 
 	@Autowired
-	private GestorPedidos gestorPedidos;
+	private ServicioPedidos gestorPedidos;
 		
 	@GetMapping(produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
 	//@ResponseBody

@@ -3,11 +3,9 @@ package com.curso.modelo.persistencia;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-
-import com.curso.modelo.entidad.Cliente;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 
 public abstract class AbstractJPADao<T, K> {
 

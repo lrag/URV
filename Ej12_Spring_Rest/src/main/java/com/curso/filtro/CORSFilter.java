@@ -1,15 +1,15 @@
 package com.curso.filtro;
 import java.io.IOException;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
  
 @WebFilter(urlPatterns = "/*") 
 public class CORSFilter implements Filter {
@@ -27,13 +27,13 @@ public class CORSFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         System.out.println("CORSFilter HTTP Request: " + request.getMethod()+", "+request.getRequestURI());
 
-        //Los headers para el CORS hay que colocarlos en todas las respuestas, no solo tras una petici�n OPTIONS
+        //Los headers para el CORS hay que colocarlos en todas las respuestas, no solo tras una petición OPTIONS
         
         //Los navegadores no siempre hacen el preflight y en esas ocasiones esperan a la respuesta para aceptarla o no dependiendo de
         //los headers recibidos
         //
         //Esas peticiones sin preflight son:
-        //-Peticiones con los m�todos:
+        //-Peticiones con los métodos:
         //	GET, HEAD y POST
         //-Que incluyan solo los headers:
         //	User-Agent, Accept, Accept-Language, Content-Language
