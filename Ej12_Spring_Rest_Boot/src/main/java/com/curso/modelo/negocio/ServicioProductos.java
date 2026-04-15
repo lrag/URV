@@ -33,7 +33,7 @@ public class ServicioProductos {
 
 	@Transactional(propagation=Propagation.SUPPORTS)
 	public Producto buscar(Integer id) {
-		return null;
+		return productoDao.buscar(id);
 	}
 
 	@Transactional(propagation=Propagation.SUPPORTS)

@@ -1,9 +1,9 @@
 package com.curso.rest;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -26,7 +26,11 @@ import com.curso.rest.dto.RespuestaError;
 import com.curso.rest.dto.RespuestaOk;
 import com.curso.rest.dto.Zasca;
 
+import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Valid;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 
 /*
 GET    /clientes
@@ -37,7 +41,7 @@ DELETE /clientes/id
 */
 
 //@Controller
-@RestController
+//@RestController
 @RequestMapping(
 		path = "/clientes",
 		produces = { "application/json", "application/xml" }
@@ -112,15 +116,18 @@ public class ClientesRest_Sin_Exception_Handlers {
 		
 		Data data = new Data("Cliente insertado", new ClienteDto(cliente));
 		RespuestaOk r = new RespuestaOk("201","SUCCESS", data);
-		return new ResponseEntity<>(r, HttpStatus.CREATED);		
-		
+		return new ResponseEntity<>(r, HttpStatus.CREATED);			
 	}
 	
 	/*
 	PUT /cientes/{id}
 	Content-type : application/json
 	-----------------
-	{ cliente }
+	{  
+		id: 5
+		nombre
+		direccion...	
+	}
 	
 	public void modificar(HttpServletRequest request, HttpServletResponse response, HttpSession sesion, ServletContext svCtx) {
     */
@@ -128,7 +135,7 @@ public class ClientesRest_Sin_Exception_Handlers {
 			path = "/{id}",
 			consumes = { "application/json", "application/xml" }
 		)
-	public ResponseEntity<Respuesta> modificar(@PathVariable Integer id, @Valid @RequestBody ClienteDto clienteDto, BindingResult result) {
+	public ResponseEntity<Respuesta> modificar(@PathVariable("id") Integer id, @Valid @RequestBody ClienteDto clienteDto, BindingResult result) {
 		
 		if(result.hasErrors()) {
 			Zasca error = new Zasca("400", "Datos inválidos");
@@ -180,7 +187,6 @@ public class ClientesRest_Sin_Exception_Handlers {
 	
 	@GetMapping
 	public ResponseEntity<Respuesta> listar() {
-		
 		List<ClienteDto> clientesDto = servicioClientes.listar()
 				.stream()
 				.map(c -> new ClienteDto(c))
@@ -193,3 +199,10 @@ public class ClientesRest_Sin_Exception_Handlers {
 	}
 	
 }
+
+
+
+
+
+
+

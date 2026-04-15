@@ -39,7 +39,7 @@ DELETE /clientes/id
 
 //@RestController
 @RequestMapping(
-		path = "/clientes/{id]?dato={",
+		path = "/clientes",
 		produces = { "application/json", "application/xml" }
 	)
 public class ClientesRest {

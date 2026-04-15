@@ -6,6 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.curso.modelo.entidad.Producto;
@@ -19,7 +22,13 @@ import com.curso.rest.dto.RespuestaError;
 import com.curso.rest.dto.RespuestaOk;
 import com.curso.rest.dto.Zasca;
 
+import jakarta.validation.Valid;
+
 @RestController
+@RequestMapping(
+		path = "/productos",
+		produces = { "application/json", "application/xml" }
+	)
 public class ProductosRest {
 
 	private ServicioProductos servicioProductos;
@@ -32,7 +41,8 @@ public class ProductosRest {
 	}	
 
 	//GET /productos/{id}
-	public ResponseEntity<Respuesta> buscarProducto(Integer idProducto){
+	@GetMapping("/{idProducto}")
+	public ResponseEntity<Respuesta> buscarProducto(@PathVariable("idProducto") Integer idProducto){
 		Producto producto = servicioProductos.buscar(idProducto);
 		if(producto == null) {
 			Zasca error = new Zasca("404", "El producto "+idProducto+" no existe.");
@@ -45,8 +55,22 @@ public class ProductosRest {
 		return new ResponseEntity<>(r, HttpStatus.OK);				
 	}
 	
+	@GetMapping()
+	public ResponseEntity<Respuesta> listarProductos(){
+		List<ProductoDto> productosDto = servicioProductos
+				.listar()
+				.stream()
+				.map( producto -> new ProductoDto(producto))
+				.toList();
+		
+		Data data = new Data("Listado de productos", productosDto);
+		RespuestaOk r = new RespuestaOk("200","SUCCESS", data);
+		return new ResponseEntity<>(r, HttpStatus.OK);				
+	}
+	
 	//POST /productos
-	public ResponseEntity<Respuesta> insertarProducto(ProductoDto productoDto){		
+	@PostMapping( consumes = { "application/json", "application/xml" } )
+	public ResponseEntity<Respuesta> insertarProducto(@Valid @RequestBody ProductoDto productoDto){		
 		Producto producto = productoDto.asProducto();
 		servicioProductos.insertar(producto);
 		Data data = new Data("Producto insertado", new ProductoDto(producto));
@@ -54,7 +78,8 @@ public class ProductosRest {
 		return new ResponseEntity<>(r, HttpStatus.OK);	
 	}
 	
-	//GET /productos/{idProducto}/calificaciones
+	//GET /productos/1/calificaciones
+	@GetMapping("/{idProducto}/calificaciones")
 	public ResponseEntity<Respuesta> buscarCalificacionesProducto(@PathVariable("idProducto") Integer idProducto){
 		Producto producto = new Producto();
 		producto.setId(idProducto);
@@ -63,6 +88,9 @@ public class ProductosRest {
 				.stream()
 				.map( cp -> new CalificacionProductoDto(cp))
 				.toList();
+		
+		
+		System.out.println("CALIFICACIONES: "+calificaciones);
 		
 		Data data = new Data("Calificaciones del producto", calificaciones);
 		RespuestaOk r = new RespuestaOk("200","SUCCESS", data);

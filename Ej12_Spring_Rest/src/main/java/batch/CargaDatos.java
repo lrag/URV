@@ -27,7 +27,7 @@ public class CargaDatos {
 		EntityManagerFactory emf = (EntityManagerFactory) appCtx.getBean("entityManagerFactory");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		
+
 		Producto p1 = new Producto(null, "P1", "F1", 25d, 1000);
 		Producto p2 = new Producto(null, "P2", "F2", 50d, 1000);
 		Producto p3 = new Producto(null, "P3", "F3", 75d, 1000);

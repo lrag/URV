@@ -1,7 +1,7 @@
 package com.curso.modelo.negocio;
 
 import java.util.List;
-
+import com.curso.rest.ControladorExcepciones_Swagger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -39,7 +39,14 @@ public class ServicioCalificacionesProducto {
 
 	@Transactional(propagation=Propagation.SUPPORTS)
 	public List<CalificacionProducto> listarPorProducto(Producto producto) {
-		return calificacionProductoDao.listarPorProducto(producto);
+		
+		System.out.println("PRODUCTO: "+producto.getId());
+		
+		List<CalificacionProducto> lista = calificacionProductoDao.listarPorProducto(producto);
+		
+		System.out.println(lista);
+		
+		return lista; 
 	}
 
 }

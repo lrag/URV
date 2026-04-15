@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.curso.modelo.entidad.Cliente;
 import com.curso.modelo.entidad.Producto;
 import com.curso.modelo.negocio.excepcion.ClienteException;
+import com.curso.modelo.negocio.excepcion.RecursoNoExistenteException;
 import com.curso.modelo.persistencia.ClienteDao;
 
 @Service
@@ -45,7 +46,11 @@ public class ServicioClientes {
 	
 	@Transactional(propagation=Propagation.SUPPORTS)
 	public Cliente buscar(Integer id) {
-		return clienteDao.buscar(id);
+		Cliente cAux = clienteDao.buscar(id);
+		if(cAux == null) {
+			//throw new RecursoNoExistenteException("El cliente "+id+" no existe");
+		}		
+		return cAux;
 	}
 
 	@Transactional(propagation=Propagation.SUPPORTS)

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.curso.modelo.negocio.excepcion.NegocioException;
+import com.curso.modelo.negocio.excepcion.RecursoNoExistenteException;
 import com.curso.rest.dto.Mensaje;
 import com.curso.rest.dto.Respuesta;
 import com.curso.rest.dto.RespuestaError;
@@ -52,6 +53,19 @@ public class ControladorExcepciones {
 		Zasca error = new Zasca("400", "Error de negocio", e.getMessage());
 		RespuestaError r = new RespuestaError("400","ERROR", error);
 		return new ResponseEntity<RespuestaError>(r, HttpStatus.BAD_REQUEST);		
+	}
+	
+	@ExceptionHandler(RecursoNoExistenteException.class)
+	@ResponseBody
+	public ResponseEntity<?> handle404(RecursoNoExistenteException e) {
+		
+		System.out.println("===============================");
+		System.out.println(e.getMessage());
+		//e.printStackTrace();
+		
+		Zasca error = new Zasca("404", "Recurso no existente", e.getMessage());
+		RespuestaError r = new RespuestaError("404","NOT FOUND", error);
+		return new ResponseEntity<RespuestaError>(r, HttpStatus.NOT_FOUND);		
 	}	
 	
 	@ExceptionHandler(Throwable.class)
