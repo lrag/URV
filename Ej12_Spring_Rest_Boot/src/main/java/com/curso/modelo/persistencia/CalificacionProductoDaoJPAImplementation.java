@@ -12,7 +12,11 @@ public class CalificacionProductoDaoJPAImplementation extends AbstractJPADao<Cal
 
 	@Override
 	public List<CalificacionProducto> listarPorProducto(Producto producto) {
-		return em.createQuery("select cp from CalificacionProducto cp where cp.producto.id=:idProducto").setParameter("idProducto", producto.getId()).getResultList();
+		
+		System.out.println("DAO: "+producto);
+		List x = em.createQuery("select cp from CalificacionProducto cp where cp.producto.id=:idProducto").setParameter("idProducto", producto.getId()).getResultList();
+		System.out.println("DAO: "+x);
+		return x;
 	}
 	
 }
