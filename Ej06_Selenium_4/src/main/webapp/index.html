@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <title>Index</title>
+    
+   	<style>
+   		label {
+   			font-size: 20px;
+   		}
+   	</style>
+
+    <script type="application/javascript">
+	    
+		function calcular() {
+			let n1 = parseInt(document.getElementById('n1').value);
+			console.log(n1);
+			let n2 = parseInt(document.getElementById('n2').value);
+			let res = n1 + n2;
+			document.getElementById('res').innerText = res;
+		}    
+    
+    	function submitLogin(e){    		
+    		console.log("username:"+user.value);
+    		console.log("password:"+pass.value);  
+    		e.preventDefault()
+    	}
+    
+		window.onload = function() {
+			
+			btnLogin.onclick = submitLogin
+		
+     		document.getElementById("btn-suma").addEventListener('click', calcular);
+						
+			//Para los ejercicios de sincronizacion
+			setTimeout(() => {
+		        var boton = document.createElement('button');
+		        boton.setAttribute('id', 'btn-1');
+		        boton.setAttribute('type', 'button');
+		        boton.onclick = function(){
+		        	console.log("Botón pulsado");
+		        }
+		        boton.appendChild(document.createTextNode('Pulsar'));
+		        document.getElementById('container').appendChild(boton);
+		    }, 4000);
+		
+	    }
+		
+		function saludar(){
+			alert("Hola mundo!!!");
+		}
+		
+    </script>
+</head>
+<body>
+
+    <img src="imagenes/imagen1.png" height="100px">
+    <img src="imagenes/imagen1.png" height="100px" alt="Imagen1" name="img1">
+    <img src="imagenes/imagen2.png" height="100px" >
+
+	<hr/>
+
+    <form class="formLogin" id="loginForm" name="loginForm">
+        <div>
+            <label id="lb-user" for="username">Username:</label>
+            <input name="username" class="in-user" type="text" id="user" >
+        </div>
+        <div class="div-p">
+            <label class="lbl" for="password">Password:&nbsp;</label>
+            <input type="text" name="password" class="in-pass" id="pass" placeholder="Un ejemplo..." >
+        </div>
+        <input type="submit" name="login" value="Login" id="btnLogin"/>
+    </form>
+    
+    <hr/>
+    
+    <a href="index.html">Página</a>
+    <a href="http://www.google.com">Google</a>
+    
+    <!-- Ejemplo CssSelector 5, 6 y 7-->
+    <div id="lista-items">
+		<ul>
+			<li><input type="text" value="Item 1" autofocus>Uno</li>
+			<li><input type="text" value="Item 2" disabled>Dos</li>
+			<li><input type="text" value="Item 3">Tres</li>
+		</ul>
+	</div>
+    
+    <hr/>
+    
+    <button type="button" disabled>Click aqu&iacute;</button>
+    
+    <hr/>
+
+    <div id="carlist">
+	  <select name="cars" id="carOptions" style="width: 125px;">
+	    <option value="bmw">BMW</option>
+	    <option value="tesla">Tesla</option>
+	    <option value="ford">Ford</option>
+	    <option value="mercedes">Mercedes</option>
+	  </select>
+	</div>
+
+	<div id="colorList">
+	  <select name="colors" id="colorOptions" style="width: 125px;" multiple="multiple">
+	    <option value="red">Red</option>
+	    <option value="yellow">Yellow</option>
+	    <option value="blue">Blue</option>
+	    <option value="black">Black</option>
+	  </select>
+	</div>
+	
+	<div id="listaMeses">
+	  <select name="meses" id="meses" style="width: 125px;" size="5" multiple="multiple">
+	    <option value="enero">Enero</option>
+	    <option value="febrero">Febrero</option>
+	    <option value="marzo">Marzo</option>
+	    <option value="abril">Abril</option>
+	    <option value="mayo">Mayo</option>
+      </select>
+	</div>
+
+    <hr/>
+	
+	<div id="radiosWorking">
+	  <input type="radio" id="opt1" name="working" value="Yes">
+	  <label for="opt1">Yes</label>
+	  <input type="radio" id="opt2" name="working" value="No" checked>
+	  <label for="opt2">No</label>
+	</div>
+	
+	<div id="listaIntereses">
+	  <input type="checkbox" id="cine" name="intereses" checked>
+	  <label for="cine">Cine</label>
+	  <input type="checkbox" id="deportes" name="intereses">
+	  <label for="deportes">Deportes</label>
+	  <input type="checkbox" id="musica" name="intereses">
+	  <label for="musica">Musica</label>
+	</div>
+	
+	<hr/>
+	
+	<div id="container"></div>
+	
+	<div>
+		<input type="text" id="n1"> + <input type="text" id="n2">
+		<button type="button" id="btn-suma">Calcular</button>
+		<span id="res"></span>
+	</div>
+    
+    <label id="lb-mensaje">Mensaje:</label>
+    <input id="mensaje" type="text" value="Hola Mundo!!!" style="width:200px;">
+    
+</body>
+</html>

@@ -1,23 +1,15 @@
 package com.curso;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
-import com.curso.modelo.entidad.CalificacionProducto;
-import com.curso.modelo.entidad.Cliente;
-import com.curso.modelo.entidad.DetallePedido;
-import com.curso.modelo.entidad.Pedido;
 import com.curso.modelo.entidad.Producto;
 import com.curso.modelo.persistencia.CalificacionProductoDao;
 import com.curso.modelo.persistencia.ProductoDao;
 
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 
 @SpringBootApplication
@@ -26,8 +18,7 @@ public class Aplicacion implements CommandLineRunner{
 	@Autowired private ProductoDao pDao;
 	@Autowired private CalificacionProductoDao cpDao;
 	@Autowired private EntityManagerFactory emf;
-	
-	
+		
 	public static void main(String[] args) {
 		SpringApplication.run(Aplicacion.class, args);
 	}

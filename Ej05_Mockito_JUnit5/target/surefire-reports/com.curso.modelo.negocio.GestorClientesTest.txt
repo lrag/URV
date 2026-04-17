@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: com.curso.modelo.negocio.GestorClientesTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.527 sec <<< FAILURE! - in com.curso.modelo.negocio.GestorClientesTest
+altaClienteTest  Time elapsed: 0.522 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.curso.modelo.negocio.GestorClientesTest.getClienteDaoMock(GestorClientesTest.java:117)
+	at com.curso.modelo.negocio.GestorClientesTest.inicializar(GestorClientesTest.java:47)
+

@@ -89,9 +89,6 @@ public class ProductosRest {
 				.map( cp -> new CalificacionProductoDto(cp))
 				.toList();
 		
-		
-		System.out.println("CALIFICACIONES: "+calificaciones);
-		
 		Data data = new Data("Calificaciones del producto", calificaciones);
 		RespuestaOk r = new RespuestaOk("200","SUCCESS", data);
 		return new ResponseEntity<>(r, HttpStatus.OK);	

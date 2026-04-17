@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Selenium</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="text-center page-header">
+		<h1>Login</h1>
+	</div>
+
+	<form action="SVLogin" method="POST">
+		<div class="row">
+			<div class="col-xs-1 col-sm-4"></div>
+			<div class="col-xs-10 col-sm-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Login</div>
+					<div class="panel-body">
+						<div class="form-horizontal" id="formulario">
+							<div class="form-group">
+								<label class="control-label col-xs-2">Login</label>
+								<div class="col-xs-10">
+									<input type="text" class="form-control" name="login" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-xs-2">Pw</label>
+								<div class="col-xs-10">
+									<input type="text" class="form-control" name="pw" />
+								</div>
+							</div>
+	
+							<div class="form-group">
+								<div class="col-xs-2"></div>
+								<div class="col-xs-8">
+									<input type="submit" value="Entrar" id="btnEntrar" />
+								</div>
+							</div>
+	
+							<div style="display: none" id="mensaje" class="alert alert-danger">
+								Credenciales incorrectas
+							</div>
+	
+						</div>
+						<!--formulario-->
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-1 col-sm-4"></div>
+		</div>
+	</form>
+	
+
+</body>
+</html>

@@ -39,14 +39,7 @@ public class ServicioCalificacionesProducto {
 
 	@Transactional(propagation=Propagation.SUPPORTS)
 	public List<CalificacionProducto> listarPorProducto(Producto producto) {
-		
-		System.out.println("PRODUCTO: "+producto.getId());
-		
-		List<CalificacionProducto> lista = calificacionProductoDao.listarPorProducto(producto);
-		
-		System.out.println(lista);
-		
-		return lista; 
+		return calificacionProductoDao.listarPorProducto(producto);
 	}
 
 }
