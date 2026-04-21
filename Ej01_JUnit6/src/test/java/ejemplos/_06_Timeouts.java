@@ -46,6 +46,7 @@ public class _06_Timeouts {
 			);
 		*/
 		
+
 		//Detiene la prueba si se excede el tiempo
 		Assertions.assertTimeoutPreemptively(
 				Duration.ofMillis(2000), 

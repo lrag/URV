@@ -12,7 +12,6 @@ import static org.mockito.Mockito.mock;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
@@ -24,7 +23,6 @@ import com.curso.modelo.entidad.Cliente;
 import com.curso.modelo.entidad.Comercial;
 import com.curso.modelo.entidad.Sucursal;
 import com.curso.modelo.negocio.excepcion.DireccionException;
-import com.curso.modelo.negocio.excepcion.SucursalException;
 import com.curso.modelo.persistencia.ClienteDao;
 import com.curso.modelo.persistencia.ClienteDaoImpl;
 import com.curso.modelo.util.EmisorCorreosElectronicos;
@@ -128,8 +126,8 @@ public class ServicioClientesTest {
 		//Los 'when' solo se pueden utilizar en métodos que no son void
 		//Los 'do' se pueden utilizar en cualquier método
 		//thenReturn, doReturn: cuando sabemos qué vamos a devolver
-		//thenAnswer, doAnswer: cuando necesitamos cierto c�digo para crear el valor a devolver
-		//thenThrow,  doThrow: cuando queremos que se lance una excepción		
+		//thenAnswer, doAnswer: cuando necesitamos cierto código para crear el valor a devolver
+		//thenThrow,  doThrow : cuando queremos que se lance una excepción		
 		
 		//Derochando recursos...
 		//Mockito
@@ -207,7 +205,12 @@ public class ServicioClientesTest {
 		Mockito
 			//.lenient()
 			.when(servicioComerciales.encontrarComerciales())
-			.thenReturn(comerciales);		
+			.thenReturn(comerciales);	
+		
+		//Mockito	
+		//	.doReturn(comerciales)
+		//	.when(servicioComerciales)
+		//	.encontrarComerciales();
 		
 		//Stub:		
 		ClienteDao clienteDao = Mockito.mock(ClienteDao.class); //Mockito tambien hace test doubles a partir de interfaces
@@ -292,7 +295,7 @@ public class ServicioClientesTest {
 	}
 	
 	
-	@Test
+	//@Test
 	@DisplayName("Comprobamos que gestorClientes.altaCliente realiza las llamadas correctas a sus dependecias")
 	public void pruebaMOCKS() throws Exception {
 						

@@ -41,14 +41,15 @@ public class GestorPedidosTest_Final {
 
 	//Este será el objeto real que vamos a probar
 	@InjectMocks
-	private GestorPedidos gestorPedidos = new GestorPedidos();
+	private ServicioPedidos gestorPedidos = new ServicioPedidos();
 	
 	//Este pedido se usará para las diferentes pruebas:
 	private Pedido pedido;
 	private Producto p3; 	
 	
 	//Método que inicializa el pedido
-	private void crearPedido() {		
+	@BeforeEach
+	public void crearPedido() {		
 		Producto p1 = new Producto(null, "P1", "F1", 25d, 1000);
 		Producto p2 = new Producto(null, "P2", "F2", 50d, 1000);
 		p3 = new Producto(null, "P5", "F5", 125d, 1000);
@@ -61,12 +62,7 @@ public class GestorPedidosTest_Final {
 		detalles2.add(new DetallePedido(4, pedido, p2, 75d, 25));
 		detalles2.add(new DetallePedido(5, pedido, p3, 125d, 25));
 		pedido.setDetalles(detalles2);		
-	}	
-	
-	@BeforeEach
-	public void inicializar() {
-		crearPedido();
-	}	
+	}		
 		
 	@Test
 	@DisplayName("GestorPedidos.aceptar funciona cuando el pedido es correcto")
@@ -114,7 +110,7 @@ public class GestorPedidosTest_Final {
 			);			
 	}
 	
-	//@Test
+	@Test
 	@DisplayName("GestorPedidos.aceptar lanza datosBancarios exception cuando hay un problema con los datos bancarios del cliente")
 	public void aceptarPedidoDatosBancariosMal() throws Exception {
 		
@@ -150,7 +146,7 @@ public class GestorPedidosTest_Final {
 		assertEquals("Datos bancarios incorrectos", e.getMessage());	
 	}
 	
-	//@Test
+	@Test
 	@DisplayName("GestorPedidos.aceptar lanza ExistenciasException cuando no hay existencias de un producto...")
 	public void aceptarPedidoExistenciasInsuficientes() throws ExistenciasEx {
 		
@@ -188,7 +184,7 @@ public class GestorPedidosTest_Final {
 			);		
 	}	
 		
-	//@Test
+	@Test
 	@DisplayName("GestorPedidos.aceptar invoca correctamente a sus dependencias")
 	//ESTO NO ES UN TEST UNITARIO
 	public void pruebaMocks() throws Exception {

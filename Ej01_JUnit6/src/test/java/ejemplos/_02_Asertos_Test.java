@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +16,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import com.curso.modelo.negocio.Calculadora;
 
@@ -37,10 +37,12 @@ public class _02_Asertos_Test {
 		//entonces
 		
 		//Si no existieran los asertos:
-		//if(n3 != 301) {
-		//	System.out.println("Vamos listos porque el + de java no funciona");
-		//	throw new RuntimeException("La suma no es correcta");
-		//}
+		/*
+		if(n3 != 301) {
+			System.out.println("Vamos listos porque el + de java no funciona");
+			throw new RuntimeException("La suma no es correcta");
+		}
+		*/
 			
 		//Utiliza equals, no el '=='
 		
@@ -52,17 +54,17 @@ public class _02_Asertos_Test {
 	
 	}
 	
-	//@Test
+	@Test
 	public void test2() {	
 		System.out.println("Test 2");
 		int n1 = 100;
 		int n2 = 200;
 		
 		//Utiliza equals, no el '=='
-		assertNotEquals(n1, n2, "No son iguales");	
+		assertNotEquals(n1, n2, "Son iguales y no tendrían que serlo!");	
 	}
 	
-	//@Test
+	@Test
 	public void test3() {
 		System.out.println("Test 3");		
 		int n1 = 100;
@@ -72,7 +74,7 @@ public class _02_Asertos_Test {
 		assertTrue(n2 > n1);		
 	}
 
-	//@Test
+	@Test
 	public void test4() {
 		System.out.println("Test 4");		
 		int n1 = 100;
@@ -80,7 +82,7 @@ public class _02_Asertos_Test {
 		assertFalse(n2 < n1);		
 	}
 
-	//@Test
+	@Test
 	public void test5() throws Exception {
 		System.out.println("Test 5");	
 		String txt = null;
@@ -88,7 +90,7 @@ public class _02_Asertos_Test {
 		assertNull(txt);	
 	}
 
-	//@Test
+	@Test
 	public void test6() {
 		System.out.println("Test 6");	
 		String txt = new String("TXT");
@@ -96,7 +98,7 @@ public class _02_Asertos_Test {
 		assertNotNull(txt);	
 	}
 	
-	//@Test
+	@Test
 	public void test7() {
 		System.out.println("Test 7");	
 
@@ -115,7 +117,7 @@ public class _02_Asertos_Test {
 		assertSame(c1, c2);	
 	}
 	
-	//@Test
+	@Test
 	public void test8() {
 		System.out.println("Test 8");	
 		Integer i1 = 128;
@@ -128,23 +130,24 @@ public class _02_Asertos_Test {
 		assertNotSame(c1, c2);			
 	}
 
-	//@Test
+	@Test
 	public void test9() {
 		System.out.println("Test 9");
 		String[] palabras1 = new String[] {"HELLO","DOCTOR","NAME","CONTINUE","YESTERDAY","TOMORROW"};
 		String[] palabras2 = new String[] {"HELLO","DOCTOR","NAME","CONTINUE","YESTERDAY","TOMORROW"};
 		
-		
-		//for(int a=0; a<palabras1.length; a++) {
-		//	if(!palabras1[a].equals(palabras2[a])) {
-		//		throw new RuntimeException("No son iguales!!!!");
-		//	}
-		//}
+		/*
+		for(int a=0; a<palabras1.length; a++) {
+			if(!palabras1[a].equals(palabras2[a])) {
+				throw new RuntimeException("No son iguales!!!!");
+			}
+		}
+		*/
 		
 		assertArrayEquals(palabras2, palabras1);	
 	}
 
-	//@Test
+	@Test
 	public void test10() {
 		System.out.println("Test 10");
 		String[] palabras1 = new String[] {"HELLO","DOCTOR","NAME","CONTINUE","YESTERDAY","TOMORROW"};
@@ -157,18 +160,18 @@ public class _02_Asertos_Test {
 		assertIterableEquals(lista1, lista2);		
 	}
 	
-	//@Test
+	@Test
 	public void test11() {
 		System.out.println("Test 11");
 		
 		boolean condicionDificilDeExpresarConUnAserto = false;
 		if(!condicionDificilDeExpresarConUnAserto) {
 			//throw new RuntimeException("La liamos parda"); //Ñapa
-			fail("Test fallido");
+			Assertions.fail("Test fallido");
 		}
 	}
 	
-	//@Test
+	@Test
 	@DisplayName("Prueba de assertAll (test12)")
 	void test12() {
 		
@@ -198,14 +201,14 @@ public class _02_Asertos_Test {
 		//c2.sumResult = sumResult;
 		//Comprobador3 c3 = new Comprobador3();
 		//c3.sumResult = sumResult;
-		//assertAll(c1, c2, c3);		
+		//Assertions.assertAll(c1, c2, c3);		
 		
 
 		//Con clases internas anónimas
-		/*
+
 		Assertions.assertAll( 
 				new Executable() {
-					public void execute() throws Throwable -> {
+					public void execute() throws Throwable {
 						System.out.println("I");
 						assertNotNull(sumResult);
 					}
@@ -222,7 +225,6 @@ public class _02_Asertos_Test {
 						assertTrue(sumResult < 10, "No es menor que 10");
 					}
 				});	
-		*/	
 		
 		//Con expresiones lambda
 		Assertions.assertAll(
@@ -244,7 +246,7 @@ public class _02_Asertos_Test {
 }
 
 
-/*
+
 class Comprobador1 implements Executable {
 	public Double sumResult;	
 	
@@ -274,6 +276,5 @@ class Comprobador3 implements Executable {
 		Assertions.assertTrue(sumResult < 10);
 	}
 }
-*/
 
 

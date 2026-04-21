@@ -23,9 +23,12 @@ public class ServicioComerciales {
 	}
 	
 	public List<Comercial> encontrarComerciales(){
+		
 		//
-		//L�gica de negocio para encontrar comerciales
+		//Lógica de negocio para encontrar comerciales
 		//
+		
+		
 		Comercial com1 = new Comercial(1, "EMP-1", "Venancio");
 		Comercial com2 = new Comercial(2, "EMP-2", "Venancia");
 		List<Comercial> comerciales = new ArrayList<>();

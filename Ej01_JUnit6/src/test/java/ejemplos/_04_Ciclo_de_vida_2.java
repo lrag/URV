@@ -20,7 +20,7 @@ public class _04_Ciclo_de_vida_2 {
 		System.out.println("Instanciando 04_Ciclo_de_vida_2");
 	}
 
-	@BeforeAll
+	@BeforeAll //Puede haber más de un método con @BeforeAll, @AfterAll...
 	public static void beforeAll() {
 		System.out.println("Before all");
 		//Si calculadora es estático se utilizará la misma instancia para todas las pruebas

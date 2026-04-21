@@ -9,9 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import com.curso.modelo.entidad.Avion;
 
-
-
-
 public class ServicioAvionesTest {
 
 	private ServicioAviones gestorAviones;
@@ -22,7 +19,7 @@ public class ServicioAvionesTest {
 	}
 
 	@Test
-	void despuesDeInsertarElAvionTendraId() throws Exception {		
+	void despuesDeHaberInserrtadoElAvionEsteTendraId() throws Exception {		
 		
 		Avion a = new Avion(null, "Messerschmitt", "BF 109", 1936);
 		//ESTE TRY HACE QUE EL TEST ESTÉ MAL DISEÑADO:
@@ -103,7 +100,6 @@ public class ServicioAvionesTest {
 
 	@Test
 	void testListar() {
-
 		List<Avion> aviones = gestorAviones.listar();
 		
 		//JUnit
@@ -111,8 +107,7 @@ public class ServicioAvionesTest {
 		//Hamcrest
 		//assertThat(aviones,  is(not(empty())));
 		//
-		assertThat(aviones).isNotEmpty();	
-		
+		assertThat(aviones).isNotEmpty();		
 	}
 
 	@Test

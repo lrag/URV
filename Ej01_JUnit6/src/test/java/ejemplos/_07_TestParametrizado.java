@@ -50,7 +50,7 @@ public class _07_TestParametrizado {
 	*/
 	
 	@ParameterizedTest
-	@ValueSource(   doubles = { 5, 25, 50, 75 })
+	@ValueSource( doubles = { 5, 25, 50, 75 })
 	@DisplayName("Prueba de test parametrizado")
 	public void ejemplo(Double numero) {
 		//Dado este número

@@ -7,7 +7,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import com.curso.cfg.Configuracion;
 import com.curso.modelo.entidad.DetallePedido;
 import com.curso.modelo.entidad.Pedido;
-import com.curso.modelo.negocio.GestorPedidos;
+import com.curso.modelo.negocio.ServicioPedidos;
 
 public class Pruebas {
 
@@ -16,7 +16,7 @@ public class Pruebas {
 		AbstractApplicationContext appCtx = new AnnotationConfigApplicationContext(Configuracion.class);
 		
 		
-		GestorPedidos gp = appCtx.getBean(GestorPedidos.class);
+		ServicioPedidos gp = appCtx.getBean(ServicioPedidos.class);
 		try {
 			gp.aceptar(3);
 		} catch (Exception e) {

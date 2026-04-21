@@ -1,5 +1,6 @@
 package com.curso.modelo.negocio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.curso.modelo.entidad.Cliente;
@@ -73,14 +74,17 @@ public class ServicioClientes {
 	// Recibimos una lista de clientes e intentamos insertarlos
 	// Si hay algún cliente que no se puede insertar el proceso NO se detiene
 	public void altaClientes(List<Cliente> clientes) {
+		List<Cliente> clientesNoInsertados = new ArrayList<>();
 		for (Cliente c : clientes) {
 			try {
 				altaCliente(c);
 			} catch (Exception e) {
 				// e.printStackTrace();
 				System.out.println(e.getMessage());
+				clientesNoInsertados.add(c);
 			}
 		}
+		//return clientesNoInsertados;
 	}
 
 	// En los test doubles solo aparecen los métodos PUBLICOS

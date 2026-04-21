@@ -56,9 +56,6 @@ public class _05_Excepciones {
 		}
 		*/
 		
-		
-				
-		
 		/*
 		//Ni hablar de esto
 		ComprobadorExcepcionDivisionPorCero c = new ComprobadorExcepcionDivisionPorCero();
@@ -70,7 +67,7 @@ public class _05_Excepciones {
 		*/
 		
 		
-		//Con clase interna an�nima
+		//Con clase interna anónima
 		/*
 		Executable exe = new Executable() {
 			public void execute() throws Throwable {
@@ -96,8 +93,7 @@ public class _05_Excepciones {
 				CalculadoraException.class,  
 				() -> calculadora.dividir(dividendo, divisor)
 			);
-		*/
-		
+		*/		
 
 		//Nos entregan la excepción que se ha lanzado por si nos hace falta
 		CalculadoraException e = Assertions.assertThrows(

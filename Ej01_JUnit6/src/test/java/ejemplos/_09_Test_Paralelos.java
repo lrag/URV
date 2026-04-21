@@ -9,7 +9,8 @@ import org.junit.jupiter.api.parallel.ExecutionMode;
 /*
 src/test/resources/junit-plattform.properties
 */
-@Execution(ExecutionMode.SAME_THREAD)
+//@Execution(ExecutionMode.SAME_THREAD)
+@Execution(ExecutionMode.CONCURRENT)
 public class _09_Test_Paralelos {
 
 	@Test

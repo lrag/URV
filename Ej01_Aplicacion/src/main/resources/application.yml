@@ -1,0 +1,5 @@
+
+com.curso.saludador.mensaje: HOLA RADIOLA
+com.curso.saludador.mensajeDespedida: Hasta otra
+
+#com.curso.cronometro.pattern: com.curso.negocio.*.*(..)
