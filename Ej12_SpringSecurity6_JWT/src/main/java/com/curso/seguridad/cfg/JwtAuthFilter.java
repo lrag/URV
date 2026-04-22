@@ -40,7 +40,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         //Si viene el token se examina
         //Si todo es correcto se añade el usuario al security context holder
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            token = authHeader.substring(7);
+            token = authHeader.substring(7); // XD
             
             Claims claims = jwtUtil.extractAllClaims(token);
             

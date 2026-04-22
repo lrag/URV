@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://curso.com/webservice/clientes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://curso.com/webservice/clientes" targetNamespace="http://curso.com/webservice/clientes">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://curso.com/webservice/clientes">
+
+    <xs:complexType name="cliente">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="direccion" type="xs:string"/>
+            <xs:element name="telefono" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="altaClienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cliente" type="tns:cliente"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="altaClienteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="resultado" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="modificarClienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cliente" type="tns:cliente"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="modificarClienteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="resultado" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="bajaClienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="bajaClienteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="confirmacion" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="buscarPorIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="buscarPorIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="cliente" type="tns:cliente"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="listarClientesRequest">
+        <xs:complexType>
+            <xs:sequence/> </xs:complexType>
+    </xs:element>
+    <xs:element name="listarClientesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="clientes" type="tns:cliente"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="altaClienteResponse">
+    <wsdl:part element="tns:altaClienteResponse" name="altaClienteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarPorIdRequest">
+    <wsdl:part element="tns:buscarPorIdRequest" name="buscarPorIdRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bajaClienteResponse">
+    <wsdl:part element="tns:bajaClienteResponse" name="bajaClienteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modificarClienteResponse">
+    <wsdl:part element="tns:modificarClienteResponse" name="modificarClienteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bajaClienteRequest">
+    <wsdl:part element="tns:bajaClienteRequest" name="bajaClienteRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listarClientesRequest">
+    <wsdl:part element="tns:listarClientesRequest" name="listarClientesRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="altaClienteRequest">
+    <wsdl:part element="tns:altaClienteRequest" name="altaClienteRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modificarClienteRequest">
+    <wsdl:part element="tns:modificarClienteRequest" name="modificarClienteRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarPorIdResponse">
+    <wsdl:part element="tns:buscarPorIdResponse" name="buscarPorIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listarClientesResponse">
+    <wsdl:part element="tns:listarClientesResponse" name="listarClientesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ClientesPort">
+    <wsdl:operation name="altaCliente">
+      <wsdl:input message="tns:altaClienteRequest" name="altaClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:altaClienteResponse" name="altaClienteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPorId">
+      <wsdl:input message="tns:buscarPorIdRequest" name="buscarPorIdRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:buscarPorIdResponse" name="buscarPorIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bajaCliente">
+      <wsdl:input message="tns:bajaClienteRequest" name="bajaClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:bajaClienteResponse" name="bajaClienteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarCliente">
+      <wsdl:input message="tns:modificarClienteRequest" name="modificarClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:modificarClienteResponse" name="modificarClienteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarClientes">
+      <wsdl:input message="tns:listarClientesRequest" name="listarClientesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:listarClientesResponse" name="listarClientesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClientesPortSoap11" type="tns:ClientesPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="altaCliente">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="altaClienteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="altaClienteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPorId">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="buscarPorIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="buscarPorIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bajaCliente">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="bajaClienteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="bajaClienteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarCliente">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="modificarClienteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modificarClienteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarClientes">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="listarClientesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listarClientesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientesPortService">
+    <wsdl:port binding="tns:ClientesPortSoap11" name="ClientesPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
