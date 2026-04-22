@@ -12,6 +12,10 @@ import com.curso.modelo.persistencia.ProductoRepositorio;
 @Component
 public class ProductosRestProxy {
 
+	//RestTemplate: Síncrona, imperativa. Es la antígua
+	//RestClient: Síncrona, declarativa. Es la que hay que utilizar
+	//WebClient: Cliente REACTIVO
+	
 	@Autowired private RestClient restClient;	
 	@Autowired private ProductoRepositorio productoRepo;
 	

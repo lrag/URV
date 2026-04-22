@@ -34,11 +34,39 @@ class ServicioPedidosTestUnitario {
 	@Autowired
 	//Este es el objeto real que queremos probar
 	ServicioPedidos servicioPedidos;
-
 	
 	public ServicioPedidosTestUnitario() {
 		super();
 		System.out.println("Creando ServicioPedidosTestUnitario");
+	}	
+	
+	public Producto getProducto1() {
+		Producto pr1 = new Producto();
+		pr1.setCodigo("PROD-1");
+		return pr1;
+	}
+	
+	public Producto getProducto2() {
+		Producto pr2 = new Producto();
+		pr2.setCodigo("PROD-2");
+		return pr2;
+	}
+	
+	public Cliente getCliente() {
+		Cliente c1 = new Cliente();
+		c1.setLogin("ringo@starr.com");
+		return c1;
+	}
+	
+	public Pedido getPedido() {
+		Producto pr1 = getProducto1();
+		Producto pr2 = getProducto2();
+		
+		List<DetallePedido> detalles1 = new ArrayList<>();
+		Pedido pedidoRecibido = new Pedido(1,null,"FECHA", "PENDIENTE", 0d, getCliente(), detalles1);
+		detalles1.add(new DetallePedido(1, 10d, 1, pedidoRecibido, pr1));
+		detalles1.add(new DetallePedido(2, 20d, 1, pedidoRecibido, pr2));	
+		return pedidoRecibido;
 	}
 
 	@Test
@@ -50,19 +78,9 @@ class ServicioPedidosTestUnitario {
 		System.out.println(">>TEST 1>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		
 		//DADOS ESTOS DATOS
-		Cliente c1 = new Cliente();
-		c1.setLogin("ringo@starr.com");
+		Cliente c1 = getCliente();
+		Pedido pedidoRecibido = getPedido();
 		
-		Producto pr1 = new Producto();
-		pr1.setCodigo("PROD-1");
-		Producto pr2 = new Producto();
-		pr2.setCodigo("PROD-2");
-		
-		List<DetallePedido> detalles1 = new ArrayList<>();
-		Pedido pedidoRecibido = new Pedido(1,null,"FECHA", "PENDIENTE", 0d, c1, detalles1);
-		detalles1.add(new DetallePedido(1, 10d, 1, pedidoRecibido, pr1));
-		detalles1.add(new DetallePedido(2, 20d, 1, pedidoRecibido, pr2));
-
 		//ESTOS TEST DOUBLES
 		
 		//PedidoRepositorio es un DUMMIE	
@@ -72,14 +90,14 @@ class ServicioPedidosTestUnitario {
 			.thenReturn(new Cliente(1,"ringo@starr.com", "Ringo Starr", "1234"));
 		
 		Mockito
-			.when(productosRestProxy.buscar(pr1.getCodigo()))
+			.when(productosRestProxy.buscar(getProducto1().getCodigo()))
 			.thenReturn(new Producto(1, "PROD-1", "Chisme", 10d));	
 		
 		Mockito
-			.when(productosRestProxy.buscar(pr2.getCodigo()))
+			.when(productosRestProxy.buscar(getProducto2().getCodigo()))
 			.thenReturn(new Producto(2, "PROD-2", "Fleje", 20d));	
 
-		//Y UN GESTOR_PEDIDOS
+		//Y UN GESTOR_PEDIDOS que nos han inyectado con @Autowired
 		
 		//CUANDO
 		Pedido pedidoAlta = servicioPedidos.altaPedido(pedidoRecibido);

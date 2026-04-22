@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import com.curso.modelo.entidad.Cliente;
@@ -16,6 +15,7 @@ import com.curso.modelo.entidad.DetallePedido;
 import com.curso.modelo.entidad.Pedido;
 import com.curso.modelo.entidad.Producto;
 import com.curso.modelo.negocio.ServicioPedidos;
+import com.curso.modelo.persistencia.ClienteRepositorio;
 import com.curso.modelo.persistencia.OfertaRepositorio;
 import com.curso.modelo.persistencia.PedidoRepositorio;
 import com.curso.modelo.proxy.ClientesRestProxy;
@@ -29,8 +29,10 @@ class GestorPedidosTestIntegracionSinBaseDeDatos {
 	@MockitoBean ClientesRestProxy clientesRestProxy;
 	@MockitoBean ProductosRestProxy productosRestProxy;
 	
+	//Sustituimos a todos los repo por test doubles
 	@MockitoBean OfertaRepositorio ofertaRepositorio;
 	@MockitoBean PedidoRepositorio pedidoRepositorio;
+	@MockitoBean ClienteRepositorio clienteRepositorio;
 	
 	//ESTA SERÁ UNA DEPENDENCIA REAL
 	//@MockBean ServicioOfertas servicioOfertas;

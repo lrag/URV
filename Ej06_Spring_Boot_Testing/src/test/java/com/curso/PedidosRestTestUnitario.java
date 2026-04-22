@@ -37,9 +37,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 class PedidosRestTestUnitario {
 
 	//Test doubles
-	@MockitoBean ClientesRestProxy clientesRestProxy;
-	@MockitoBean ProductosRestProxy productosRestProxy;	
-		
 	@MockitoBean PedidoRepositorio pedidoRepositorio; 
 	@MockitoBean ServicioPedidos servicioPedidos;
 	
@@ -119,39 +116,5 @@ class PedidosRestTestUnitario {
 			.andExpect(status().isOk())
 			.andExpect(jsonPath("$.codigo", Matchers.is("PED-10")));			
 	}	
-	
-	@Test
-	void altaPedido() throws Exception {
-		
-		Cliente c1 = new Cliente();
-		c1.setLogin("ringo@starr.com");
-		
-		Producto pr1 = new Producto();
-		pr1.setCodigo("PROD-1");
-		Producto pr2 = new Producto();
-		pr2.setCodigo("PROD-2");
-		
-		List<DetallePedido> detalles1 = new ArrayList<>();
-		Pedido pedidoRecibido = new Pedido(1,null,"FECHA", "PENDIENTE", 0d, c1, detalles1);
-		detalles1.add(new DetallePedido(1, 10d, 1, null, pr1));
-		detalles1.add(new DetallePedido(2, 20d, 1, null, pr2));	
-		
-		Mockito
-			.when(clientesRestProxy.buscar(c1.getLogin()))
-			.thenReturn(new Cliente(1,"ringo@starr.com", "Ringo Starr", "1234"));
-		
-		Mockito
-			.when(productosRestProxy.buscar(pr1.getCodigo()))
-			.thenReturn(new Producto(1, "PROD-1", "Chisme", 10d));	
-		Mockito
-			.when(productosRestProxy.buscar(pr2.getCodigo()))
-			.thenReturn(new Producto(2, "PROD-2", "Fleje", 20d));			
-		
-		mockMvc
-			.perform(post("/pedidos")
-			.contentType("application/json")
-			.content(objectMapper.writeValueAsString(pedidoRecibido)))
-			.andExpect(status().isCreated());			
-	}		
 
 }

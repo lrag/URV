@@ -37,6 +37,10 @@ class PedidosRestTestIntegracion {
 	@MockitoBean ProductosRestProxy productosRestProxy;	
 	
 	//Este test tiene todo real excepto los Clientes de las aplicaciones remotas
+	//
+	//Aqui hasta estamos utilizando una base de datos real. Y tambien estamos haciendo 
+	//trampas porque esta es un H2.
+	//En el mundo real lo mejor sería sustituir los Repo por TEST DOUBLES
 	
 	//Objecto REAL
 	@Autowired ObjectMapper objectMapper;	

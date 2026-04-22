@@ -41,7 +41,7 @@ public class PedidosRest {
 		return new ResponseEntity<>(new PedidoDTO(pedidoInsertado), HttpStatus.CREATED);		
 	}
 
-	@GetMapping
+	@GetMapping()
 	public List<PedidoDTO> listar() {
 		//No estamos controlando que esta petición falle!!!
 		return pedidoRepo.findAll().stream().map(p -> new PedidoDTO(p)).collect(Collectors.toList());

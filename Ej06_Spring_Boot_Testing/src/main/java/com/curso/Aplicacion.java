@@ -1,11 +1,16 @@
 package com.curso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.curso.modelo.entidad.Cliente;
+import com.curso.modelo.entidad.DetallePedido;
+import com.curso.modelo.entidad.Pedido;
 import com.curso.modelo.entidad.Producto;
 import com.curso.modelo.negocio.ServicioPedidos;
 import com.curso.modelo.persistencia.ClienteRepositorio;
@@ -60,42 +65,39 @@ public class Aplicacion implements CommandLineRunner {
 		System.out.println("================================");
 		if(clienteRepo.count() == 0) {
 			clienteRepo.save(new Cliente(null,"philip","Philip Marlowe","banco 2"));
-		}
-		if(productoRepo.count() == 0) {
+
 			productoRepo.save(new Producto(null, "PROD-1", "Chisme", 10d));	
-			productoRepo.save(new Producto(null, "PROD-2", "Fleje", 20d));	
+			productoRepo.save(new Producto(null, "PROD-3", "Fleje", 20d));	
+		
+			//System.out.println("================================");
+			//pedidoRepo.findAll().forEach( p -> System.out.println(p.getDetalles()));
+			
+			Pedido p = new Pedido();
+			Cliente c = new Cliente();
+			c.setLogin("philip");
+			p.setCliente(c);
+			
+			Producto p1 = new Producto();
+			p1.setCodigo("PROD-1");
+			Producto p2 = new Producto();
+			p2.setCodigo("PROD-3");
+			
+			DetallePedido dp1 = new DetallePedido();
+			dp1.setProducto(p1);
+			dp1.setCantidad(1);
+			
+			DetallePedido dp2 = new DetallePedido();
+			dp2.setProducto(p2);
+			dp2.setCantidad(5);
+			
+			List<DetallePedido> detalles = new ArrayList<>();
+			detalles.add(dp1);
+			detalles.add(dp2);
+			
+			p.setDetalles(detalles);
+			
+			gestorPedidos.altaPedido(p);
 		}
-		
-		//System.out.println("================================");
-		//pedidoRepo.findAll().forEach( p -> System.out.println(p.getDetalles()));
-		
-		/*
-		Pedido p = new Pedido();
-		Cliente c = new Cliente();
-		c.setLogin("sam");
-		p.setCliente(c);
-		
-		Producto p1 = new Producto();
-		p1.setCodigo("PROD-1");
-		Producto p2 = new Producto();
-		p2.setCodigo("PROD-3");
-		
-		DetallePedido dp1 = new DetallePedido();
-		dp1.setProducto(p1);
-		dp1.setCantidad(1);
-		
-		DetallePedido dp2 = new DetallePedido();
-		dp2.setProducto(p2);
-		dp2.setCantidad(5);
-		
-		List<DetallePedido> detalles = new ArrayList<>();
-		detalles.add(dp1);
-		detalles.add(dp2);
-		
-		p.setDetalles(detalles);
-		
-		gestorPedidos.altaPedido(p);
-		*/
 		
 	}
 

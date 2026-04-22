@@ -26,8 +26,13 @@ class ServicioPedidosTestIntegracion {
 	@MockitoBean ClientesRestProxy clientesRestProxy;
 	@MockitoBean ProductosRestProxy productosRestProxy;
 	
-	//ESTAS SERÁN DEPENDENCIAS REALES
+	//ESTAS SERÁN DEPENDENCIAS REALES (incluyendo a los repositorios que utilizan!)
+	//Si no tuvieramos la base de datos disponible (aqui tenemos H2, que es hacer trampa)
+	//deberíamos declarar como test doubles todos los repositorios
 	//@MockBean PedidoRepositorio pedidoRepositorio;
+	//@MockBean ClienteRepositorio clienteRepositorio;
+	//@MockBean ProductoRepositorio productoRepositorio;
+	
 	//@MockBean ServicioOfertas servicioOfertas;
 	
 	//OBJETO REAL
