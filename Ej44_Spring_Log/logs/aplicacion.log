@@ -1,0 +1,8 @@
+2026-03-06T01:51:28.255+01:00 DEBUG 44160 --- [main] c.curso.modelo.negocio.ServicioClientes  : DEBUG en SC.modificar
+2026-03-06T01:51:28.258+01:00  INFO 44160 --- [main] c.curso.modelo.negocio.ServicioClientes  : INFO en SC.modificar
+2026-03-06T01:51:28.258+01:00 DEBUG 44160 --- [main] c.c.m.persistencia.RepositorioCliente    : DEBUG en RC.modificar
+2026-03-06T01:51:28.258+01:00  INFO 44160 --- [main] c.c.m.persistencia.RepositorioCliente    : INFO en RC.modificar
+2026-03-06T01:51:28.259+01:00 DEBUG 44160 --- [main] c.curso.modelo.negocio.ServicioClientes  : DEBUG en SC.borrar
+2026-03-06T01:51:28.259+01:00  INFO 44160 --- [main] c.curso.modelo.negocio.ServicioClientes  : INFO en SC.borrar
+2026-03-06T01:51:28.259+01:00 DEBUG 44160 --- [main] c.c.m.persistencia.RepositorioCliente    : DEBUG en RC.borrar
+2026-03-06T01:51:28.276+01:00  INFO 44160 --- [main] c.c.m.persistencia.RepositorioCliente    : INFO en RC.borrar

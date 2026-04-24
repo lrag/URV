@@ -1,0 +1,24 @@
+logging:
+  group:
+    librerias: 
+      - org.hibernate
+      - org.springframework.jdbc
+      - com.zaxxer.hikari 
+  level:
+    root: INFO
+    com.curso.modelo: DEBUG
+    librerias: DEBUG
+  
+  file:
+    name: logs/aplicacion.log
+
+  logback:
+    rollingpolicy:
+      max-file-size: 1KB #0MB
+      file-name-pattern: "logs/archivo/aplicacion.%d{yyyy-MM-dd}.%i.gz"
+      max-history: 7
+      total-size-cap: 1GB
+      clean-history-on-start: false
+
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
