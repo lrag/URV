@@ -10,6 +10,20 @@ import com.curso.configuracion.ClienteSoapConfig;
 import com.curso.soap.cliente.ClienteSoapClient;
 import com.curso.webservice.clientes.ClienteDTO;
 
+//PASOS A SEGUIR
+//
+//1- Nos pasan el xsd con la definición de los tipos y los parámetros/respuesta de cada operación
+//
+//2- Generamos con el plugin de maven las clases a partir del xsd
+//
+//3- Programamos el cliente 
+//		com.curso.soap.cliente.ClienteSoapClient
+//
+//4- Configuracion. Hay que registrar:
+//		Marsaller
+//		el cliente que hemos programado
+//		com.curso.configuracion.ClienteSoapConfig
+
 @SpringBootApplication
 public class Aplicacion implements CommandLineRunner {
 

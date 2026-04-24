@@ -51,7 +51,6 @@ import com.curso.webservice.clientes.ModificarClienteResponse;
  
 */
 
-
 @Endpoint
 public class ClienteEndpoint {
     private static final String NAMESPACE_URI = "http://curso.com/webservice/clientes";

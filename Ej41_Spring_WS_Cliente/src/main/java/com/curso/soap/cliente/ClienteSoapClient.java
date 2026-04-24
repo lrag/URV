@@ -21,6 +21,14 @@ import com.curso.webservice.clientes.ModificarClienteResponse;
 //
 public class ClienteSoapClient extends WebServiceGatewaySupport {
 
+	//Este método acoplaría al resto de la aplicación con que esto es un servicio web SOAP.
+	/*
+	public AltaClienteResponse altaCliente_(AltaClienteRequest request) {
+		 return ((AltaClienteResponse) getWebServiceTemplate()
+	                .marshalSendAndReceive(request));
+	}
+	*/
+	
 	public String altaCliente(ClienteDTO cliente) {
         AltaClienteRequest request = new AltaClienteRequest();
         request.setCliente(cliente);

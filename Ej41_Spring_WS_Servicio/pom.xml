@@ -67,9 +67,7 @@
 			        <clearOutputDir>false</clearOutputDir>
 			    </configuration>
 			</plugin>	
-		</plugins>
-
-		
+		</plugins>		
 	</build>
 
 </project>

@@ -1,0 +1,22 @@
+spring:
+  mail:
+    host: localhost
+    port: 1025
+    
+    #username: admin
+    #password: password
+    
+    properties:
+      mail:
+        smtp:
+          auth: false
+          #Desactivamos TLS para evitar errores de certificados en local
+          starttls:
+            enable: false
+            required: false
+    
+    debug: true
+
+logging:
+  level:
+    org.springframework.mail: DEBUG

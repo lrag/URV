@@ -44,8 +44,7 @@ public class _06_SeleniumAPI {
 	@BeforeAll
 	public static void setUp() {
 		System.setProperty("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver/geckodriver.exe");
-		driver = new FirefoxDriver();
-		
+		driver = new FirefoxDriver();		
 	}	
 	
 	//@Test
